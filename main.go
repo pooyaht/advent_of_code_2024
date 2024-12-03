@@ -8,6 +8,7 @@ import (
 
 	"github.com/pooyaht/advent_of_code_2024/day1"
 	"github.com/pooyaht/advent_of_code_2024/day2"
+	"github.com/pooyaht/advent_of_code_2024/day3"
 )
 
 func main() {
@@ -32,6 +33,13 @@ func main() {
 			result = day2.RunPartA()
 		} else if *part == "b" {
 			result = day2.RunPartB()
+		}
+	case 3:
+		if *part == "a" {
+			result = day3.RunPartA()
+		}
+		if *part == "b" {
+			result = day3.RunPartB()
 		}
 	default:
 		fmt.Printf("Day %d not implemented yet\n", *day)
