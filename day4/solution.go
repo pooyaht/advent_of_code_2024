@@ -3,6 +3,8 @@ package day4
 import (
 	_ "embed"
 	"strings"
+
+	"github.com/pooyaht/advent_of_code_2024/util"
 )
 
 //go:embed input.txt
@@ -13,7 +15,7 @@ func RunPartA() int {
 }
 
 func SolvePartA(input []string) int {
-	input = pad(input, 4, ".")
+	input = util.Pad(input, 4, ".")
 	var result int
 	for rowIndex, row := range input {
 		for colIndex, val := range row {
@@ -59,7 +61,7 @@ func RunPartB() int {
 }
 
 func SolvePartB(input []string) int {
-	input = pad(input, 2, ".")
+	input = util.Pad(input, 2, ".")
 	var result int
 	for rowIndex, row := range input {
 		for colIndex, val := range row {
@@ -97,25 +99,4 @@ func checkXPattern(input []string, row, col int) int {
 	}
 
 	return patterns
-}
-
-func pad(input []string, padNum int, padSymbol string) []string {
-	originalHeight := len(input)
-	originalWidth := len(input[0])
-
-	newHeight := originalHeight + padNum*2
-	newWidth := originalWidth + padNum*2
-	grid := make([]string, newHeight)
-
-	emptyRow := strings.Repeat(padSymbol, newWidth)
-	for i := range grid {
-		grid[i] = emptyRow
-	}
-
-	for i, row := range input {
-		grid[i+padNum] = strings.Repeat(padSymbol, padNum) + row + strings.Repeat(padSymbol, padNum)
-	}
-
-	return grid
-
 }
