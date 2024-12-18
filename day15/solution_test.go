@@ -30,12 +30,12 @@ func TestSolvePartB(t *testing.T) {
 	input := `#######
 #...#.#
 #.....#
-#.@OO.#
+#.#O@.#
 #..O..#
 #.....#
 #######
 
->>vv<<^^<<^^`
+<<<vv<<^^<<^^`
 
 	expectedAnswer := 9021
 	ans := day15.SolvePartB(strings.Split(input, "\n\n"))

@@ -2,7 +2,6 @@ package day15
 
 import (
 	_ "embed"
-	"fmt"
 	"strings"
 )
 
@@ -100,14 +99,6 @@ func SolvePartB(input []string) int {
 		'<': {0, -1},
 	}
 
-	for _, row := range board {
-		if strings.Trim(string(row), " ") == "" {
-			break
-		}
-		fmt.Println(string(row))
-	}
-	fmt.Println()
-
 	directions := input[1]
 	for _, dir := range strings.Split(directions, "\n") {
 		for _, chr := range dir {
@@ -122,13 +113,6 @@ func SolvePartB(input []string) int {
 				result += 100*i + j
 			}
 		}
-	}
-
-	for _, row := range board {
-		if strings.Trim(string(row), " ") == "" {
-			break
-		}
-		fmt.Println(string(row))
 	}
 
 	return result
@@ -219,7 +203,7 @@ func canMovePartB(board [][]rune, bracketOpenX, bracketOpenY int, direction [2]i
 	if direction[0] == 0 {
 		curX, curY := bracketOpenX, bracketOpenY
 		for {
-			if curY < 0 || curY >= len(board[0]) {
+			if curY < 0 || curY >= len(board[0]) || board[curX][curY] == '#' {
 				return false, positions
 			}
 			if board[curX][curY] == '[' {
