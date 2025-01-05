@@ -49,7 +49,33 @@ func RunPartB() string {
 }
 
 func SolvePartB(input []string) string {
-	return ""
+	_, program := parseInput(input)
+	aLength := len(program)
+	validNums := make([]int, 0)
+	validNums = append(validNums, 0)
+
+	for i := 0; i < aLength; i++ {
+		nextValidNums := make([]int, 0)
+		for _, validNum := range validNums {
+			validNumShifted := validNum * 8
+			for candidate := validNumShifted; candidate < validNumShifted+8; candidate++ {
+				output := SolvePartA([]string{fmt.Sprintf("Register A: %d\nRegister B: 0\nRegister C: 0", candidate), input[1]})
+				if int(output[0]-'0') == program[aLength-i-1] {
+					nextValidNums = append(nextValidNums, candidate)
+				}
+			}
+		}
+		validNums = nextValidNums
+	}
+
+	min := validNums[0]
+	for _, num := range validNums {
+		if num < min {
+			min = num
+		}
+	}
+
+	return strconv.Itoa(min)
 }
 
 func parseInput(input []string) (map[string]int, []int) {

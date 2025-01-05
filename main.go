@@ -150,9 +150,9 @@ func main() {
 		if *part == "a" {
 			result = day17.RunPartA()
 		}
-		// if *part == "b" {
-		// 	result = day17.RunPartB()
-		// }
+		if *part == "b" {
+			result = day17.RunPartB()
+		}
 	default:
 		fmt.Printf("Day %d not implemented yet\n", *day)
 		os.Exit(1)
