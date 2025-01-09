@@ -15,6 +15,7 @@ import (
 	"github.com/pooyaht/advent_of_code_2024/day15"
 	"github.com/pooyaht/advent_of_code_2024/day16"
 	"github.com/pooyaht/advent_of_code_2024/day17"
+	"github.com/pooyaht/advent_of_code_2024/day18"
 	"github.com/pooyaht/advent_of_code_2024/day2"
 	"github.com/pooyaht/advent_of_code_2024/day3"
 	"github.com/pooyaht/advent_of_code_2024/day4"
@@ -152,6 +153,13 @@ func main() {
 		}
 		if *part == "b" {
 			result = day17.RunPartB()
+		}
+	case 18:
+		if *part == "a" {
+			result = day18.RunPartA()
+		}
+		if *part == "b" {
+			result = day18.RunPartB()
 		}
 	default:
 		fmt.Printf("Day %d not implemented yet\n", *day)
